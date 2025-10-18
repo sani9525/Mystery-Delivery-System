@@ -1,0 +1,193 @@
+[
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "Warehouse",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Agent",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Package",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "data_loader",
+        "description": "data_loader",
+        "isExtraImport": true,
+        "detail": "data_loader",
+        "documentation": {}
+    },
+    {
+        "label": "PackageAssigner",
+        "importPath": "assignment",
+        "description": "assignment",
+        "isExtraImport": true,
+        "detail": "assignment",
+        "documentation": {}
+    },
+    {
+        "label": "DeliverySimulator",
+        "importPath": "simulator",
+        "description": "simulator",
+        "isExtraImport": true,
+        "detail": "simulator",
+        "documentation": {}
+    },
+    {
+        "label": "ReportGenerator",
+        "importPath": "reporter",
+        "description": "reporter",
+        "isExtraImport": true,
+        "detail": "reporter",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "PackageAssigner",
+        "kind": 6,
+        "importPath": "assignment",
+        "description": "assignment",
+        "peekOfCode": "class PackageAssigner:\n    \"\"\"Assigns packages to agents based on proximity\"\"\"\n    def __init__(self, agents, warehouses, packages):\n        self.agents = agents\n        self.warehouses = warehouses\n        self.packages = packages\n    def assign_packages(self):\n        \"\"\"\n        Assign each package to the nearest agent\n        Uses Euclidean distance from agent to warehouse",
+        "detail": "assignment",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "kind": 6,
+        "importPath": "data_loader",
+        "description": "data_loader",
+        "peekOfCode": "class DataLoader:\n    \"\"\"Handles loading data from JSON files\"\"\"\n    def __init__(self, filename):\n        self.filename = filename\n        self.warehouses = {}\n        self.agents = {}\n        self.packages = []\n    def load_data(self):\n        \"\"\"Load and parse JSON data from file\"\"\"\n        try:",
+        "detail": "data_loader",
+        "documentation": {}
+    },
+    {
+        "label": "display_menu",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def display_menu():\n    \"\"\"Display the main menu\"\"\"\n    print(\"\\n\" + \"=\"*50)\n    print(\"       FASTBOX DELIVERY SYSTEM\")\n    print(\"=\"*50)\n    print(\"1. Run Complete Simulation\")\n    print(\"2. Load and Verify Data Only\")\n    print(\"3. Run Simulation with Custom File\")\n    print(\"4. Test and Validate JSON File\")\n    print(\"5. Exit\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "run_simulation",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def run_simulation(filename=\"base_case.json\"):\n    \"\"\"\n    Run the complete delivery simulation\n    Steps:\n    1. Load data from JSON file\n    2. Assign packages to nearest agents\n    3. Simulate deliveries\n    4. Generate and save report\n    \"\"\"\n    print(f\"\\nStarting simulation with file: {filename}\\n\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "load_data_only",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def load_data_only(filename=\"base_case.json\"):\n    \"\"\"Load and display data without running simulation\"\"\"\n    print(f\"\\nLoading data from: {filename}\\n\")\n    loader = DataLoader(filename)\n    if loader.load_data():\n        loader.verify_and_test(verbose=True)\n        return True\n    return False\ndef test_and_validate(filename):\n    \"\"\"",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "test_and_validate",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def test_and_validate(filename):\n    \"\"\"\n    Comprehensive testing and validation of JSON file\n    Includes all steps with detailed verification\n    \"\"\"\n    print(f\"\\n{'='*60}\")\n    print(f\"TESTING AND VALIDATING: {filename}\")\n    print('='*60)\n    # Step 1: Load data\n    print(\"\\n[Step 1] Loading data...\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def main():\n    \"\"\"Main program loop\"\"\"\n    while True:\n        display_menu()\n        choice = input(\"Enter your choice (1-5): \").strip()\n        if choice == \"1\":\n            run_simulation()\n        elif choice == \"2\":\n            load_data_only()\n        elif choice == \"3\":",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "Location",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Location:\n    \"\"\"Represents a 2D location with x and y coordinates\"\"\"\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def distance_to(self, other):\n        \"\"\"Calculate Euclidean distance to another location\"\"\"\n        return math.sqrt((self.x - other.x)**2 + (self.y - other.y)**2)\n    def __repr__(self):\n        return f\"({self.x}, {self.y})\"",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Warehouse",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Warehouse:\n    \"\"\"Represents a warehouse with an ID and location\"\"\"\n    def __init__(self, id, location):\n        self.id = id\n        self.location = Location(location[0], location[1])\n    def __repr__(self):\n        return f\"Warehouse({self.id}, {self.location})\"\nclass Package:\n    \"\"\"Represents a package with ID, warehouse, and destination\"\"\"\n    def __init__(self, id, warehouse_id, destination):",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Package",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Package:\n    \"\"\"Represents a package with ID, warehouse, and destination\"\"\"\n    def __init__(self, id, warehouse_id, destination):\n        self.id = id\n        self.warehouse_id = warehouse_id\n        self.destination = Location(destination[0], destination[1])\n        self.delivered = False\n    def __repr__(self):\n        return f\"Package({self.id}, Warehouse: {self.warehouse_id}, Dest: {self.destination})\"\nclass Agent:",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Agent",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Agent:\n    \"\"\"Represents a delivery agent\"\"\"\n    def __init__(self, id, location):\n        self.id = id\n        self.location = Location(location[0], location[1])\n        self.packages = []\n        self.total_distance = 0.0\n    def add_package(self, package):\n        \"\"\"Assign a package to this agent\"\"\"\n        self.packages.append(package)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "ReportGenerator",
+        "kind": 6,
+        "importPath": "reporter",
+        "description": "reporter",
+        "peekOfCode": "class ReportGenerator:\n    \"\"\"Generates reports from delivery simulation results\"\"\"\n    def __init__(self, agents):\n        self.agents = agents\n    def generate_report(self):\n        \"\"\"Generate a comprehensive delivery report\"\"\"\n        report = {}\n        # Calculate metrics for each agent\n        for agent in self.agents.values():\n            report[agent.id] = {",
+        "detail": "reporter",
+        "documentation": {}
+    },
+    {
+        "label": "DeliverySimulator",
+        "kind": 6,
+        "importPath": "simulator",
+        "description": "simulator",
+        "peekOfCode": "class DeliverySimulator:\n    \"\"\"Simulates delivery operations for all agents\"\"\"\n    def __init__(self, agents, warehouses):\n        self.agents = agents\n        self.warehouses = warehouses\n    def simulate_deliveries(self):\n        \"\"\"\n        Simulate delivery for all agents\n        Each agent picks up packages from warehouses and delivers them\n        \"\"\"",
+        "detail": "simulator",
+        "documentation": {}
+    }
+]
